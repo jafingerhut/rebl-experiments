@@ -1,0 +1,9 @@
+;; Recommendation from README in this repo for JDK 8:
+;; https://github.com/cognitect-labs/REBL-distro
+
+{:deps {}
+ :aliases
+ {:rebl {:extra-deps {
+	org.clojure/clojure {:mvn/version "1.10.0"}
+        org.clojure/core.async {:mvn/version "0.4.490"}
+	com.cognitect/rebl {:local/root "/Users/andy/clj/rebl/REBL-LATEST.jar"}}}}}
