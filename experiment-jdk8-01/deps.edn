@@ -1,5 +1,6 @@
-;; Recommendation from README in this repo for JDK 8:
-;; https://github.com/cognitect-labs/REBL-distro
+;; Recommendation from README in this repo for JDK 8, copied by me on
+;; 2019-Dec-19:
+;; https://github.com/cognitect-labs/REBL-distro/blob/master/README.md
 
 {:deps {}
  :aliases
