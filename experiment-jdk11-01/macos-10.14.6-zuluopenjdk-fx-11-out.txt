@@ -1,0 +1,80 @@
++ /bin/rm -fr .cpcache
++ uname -a
+Darwin andy-mbp.attlocal.net 18.7.0 Darwin Kernel Version 18.7.0: Sat Oct 12 00:02:19 PDT 2019; root:xnu-4903.278.12~1/RELEASE_X86_64 x86_64
++ ls -l /Users/andy/.clojure/deps.edn
+-rw-r--r--  1 andy  staff  1488 Dec 19 11:17 /Users/andy/.clojure/deps.edn
++ echo ----------------------------------------
+----------------------------------------
++ cat /Users/andy/.clojure/deps.edn
+;; The deps.edn file describes the information needed to build a classpath.
+;;
+;; When using the `clojure` or `clj` script, there are several deps.edn files
+;; that are combined:
+;; - install-level
+;; - user level (this file)
+;; - project level (current directory when invoked)
+;;
+;; For all attributes other than :paths, these config files are merged left to right.
+;; Only the last :paths is kept and others are dropped.
+
+{
+  ;; Paths
+  ;;   Directories in the current project to include in the classpath
+
+  ;; :paths ["src"]
+
+  ;; External dependencies
+ 
+  ;; :deps {
+  ;;   org.clojure/clojure {:mvn/version "1.10.1"}
+  ;; }
+
+  ;; Aliases
+	;;   resolve-deps aliases (-R) affect dependency resolution, options:
+	;;     :extra-deps - specifies extra deps to add to :deps
+	;;     :override-deps - specifies a coordinate to use instead of that in :deps
+	;;     :default-deps - specifies a coordinate to use for a lib if one isn't found
+	;;   make-classpath aliases (-C) affect the classpath generation, options:
+	;;     :extra-paths - vector of additional paths to add to the classpath
+	;;     :classpath-overrides - map of lib to path that overrides the result of resolving deps
+
+  ;; :aliases {
+  ;;   :deps {:extra-deps {org.clojure/tools.deps.alpha {:mvn/version "0.8.584"}}}
+  ;;   :test {:extra-paths ["test"]}
+  ;; }
+
+  ;; Provider attributes
+
+  ;; :mvn/repos {
+  ;;   "central" {:url "https://repo1.maven.org/maven2/"}
+  ;;   "clojars" {:url "https://repo.clojars.org/"}
+  ;; }
+}
++ echo ----------------------------------------
+----------------------------------------
++ ls -l /Users/andy/clj/rebl/REBL-LATEST.jar
+-rwxr-xr-x@ 1 andy  staff  2742771 Sep  5 20:10 /Users/andy/clj/rebl/REBL-LATEST.jar
++ openssl md5 /Users/andy/clj/rebl/REBL-LATEST.jar
+MD5(/Users/andy/clj/rebl/REBL-LATEST.jar)= 85d3a4d6a8e09426fda9aa3c198a7c02
++ java -version
+openjdk version "11.0.5" 2019-10-15 LTS
+OpenJDK Runtime Environment Zulu11.35+15-CA (build 11.0.5+10-LTS)
+OpenJDK 64-Bit Server VM Zulu11.35+15-CA (build 11.0.5+10-LTS, mixed mode)
++ clj -Sdescribe
+{:version "1.10.1.483"
+ :config-files ["/usr/local/Cellar/clojure/1.10.1.483/deps.edn" "/Users/andy/.clojure/deps.edn" "deps.edn" ]
+ :config-user "/Users/andy/.clojure/deps.edn"
+ :config-project "deps.edn"
+ :install-dir "/usr/local/Cellar/clojure/1.10.1.483"
+ :config-dir "/Users/andy/.clojure"
+ :cache-dir ".cpcache"
+ :force false
+ :repro false
+ :resolve-aliases ""
+ :classpath-aliases ""
+ :jvm-aliases ""
+ :main-aliases ""
+ :all-aliases ""}
++ exec clj -R:rebl -m cognitect.rebl
+Clojure 1.10.0
+user=> 
