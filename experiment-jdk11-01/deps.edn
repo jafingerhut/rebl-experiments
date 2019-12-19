@@ -1,0 +1,17 @@
+;; Recommendation from this wiki page for JDK 11, copied by me on
+;; 2019-Dec-19:
+;; https://github.com/cognitect-labs/REBL-distro/wiki/Java-11-Usage
+
+{:deps {}
+ :aliases
+       {:rebl
+        {:extra-deps
+         {org.clojure/clojure {:mvn/version "1.10.0"}
+          org.clojure/core.async {:mvn/version "0.4.490"}
+          com.cognitect/rebl {:local/root "/Users/andy/clj/rebl/REBL-LATEST.jar"}
+          org.openjfx/javafx-fxml     {:mvn/version "11.0.1"}
+          org.openjfx/javafx-controls {:mvn/version "11.0.1"}
+          org.openjfx/javafx-swing    {:mvn/version "11.0.1"}
+          org.openjfx/javafx-base     {:mvn/version "11.0.1"}
+          org.openjfx/javafx-web      {:mvn/version "11.0.1"}}
+         :main-opts  ["-m" "cognitect.rebl"]}}}
