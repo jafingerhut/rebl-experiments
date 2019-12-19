@@ -52,6 +52,10 @@ Darwin andy-mbp.attlocal.net 18.7.0 Darwin Kernel Version 18.7.0: Sat Oct 12 00:
 }
 + echo ----------------------------------------
 ----------------------------------------
++ ls -l /Users/andy/clj/rebl/REBL-LATEST.jar
+-rwxr-xr-x@ 1 andy  staff  2742771 Sep  5 20:10 /Users/andy/clj/rebl/REBL-LATEST.jar
++ openssl md5 /Users/andy/clj/rebl/REBL-LATEST.jar
+MD5(/Users/andy/clj/rebl/REBL-LATEST.jar)= 85d3a4d6a8e09426fda9aa3c198a7c02
 + java -version
 java version "1.8.0_192"
 Java(TM) SE Runtime Environment (build 1.8.0_192-b12)
