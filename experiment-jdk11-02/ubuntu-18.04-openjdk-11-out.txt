@@ -1,0 +1,217 @@
++ /bin/rm -fr .cpcache
++ uname -a
+Linux andyvm 5.0.0-37-generic #40~18.04.1-Ubuntu SMP Thu Nov 14 12:06:39 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
++ ls -l /home/andy/.clojure/deps.edn
+-rw-r--r-- 1 andy andy 1488 Sep 25 09:38 /home/andy/.clojure/deps.edn
++ echo ----------------------------------------
+----------------------------------------
++ cat /home/andy/.clojure/deps.edn
+;; The deps.edn file describes the information needed to build a classpath.
+;;
+;; When using the `clojure` or `clj` script, there are several deps.edn files
+;; that are combined:
+;; - install-level
+;; - user level (this file)
+;; - project level (current directory when invoked)
+;;
+;; For all attributes other than :paths, these config files are merged left to right.
+;; Only the last :paths is kept and others are dropped.
+
+{
+  ;; Paths
+  ;;   Directories in the current project to include in the classpath
+
+  ;; :paths ["src"]
+
+  ;; External dependencies
+ 
+  ;; :deps {
+  ;;   org.clojure/clojure {:mvn/version "1.10.1"}
+  ;; }
+
+  ;; Aliases
+	;;   resolve-deps aliases (-R) affect dependency resolution, options:
+	;;     :extra-deps - specifies extra deps to add to :deps
+	;;     :override-deps - specifies a coordinate to use instead of that in :deps
+	;;     :default-deps - specifies a coordinate to use for a lib if one isn't found
+	;;   make-classpath aliases (-C) affect the classpath generation, options:
+	;;     :extra-paths - vector of additional paths to add to the classpath
+	;;     :classpath-overrides - map of lib to path that overrides the result of resolving deps
+
+  ;; :aliases {
+  ;;   :deps {:extra-deps {org.clojure/tools.deps.alpha {:mvn/version "0.7.541"}}}
+  ;;   :test {:extra-paths ["test"]}
+  ;; }
+
+  ;; Provider attributes
+
+  ;; :mvn/repos {
+  ;;   "central" {:url "https://repo1.maven.org/maven2/"}
+  ;;   "clojars" {:url "https://repo.clojars.org/"}
+  ;; }
+}
++ echo ----------------------------------------
+----------------------------------------
++ ls -l /home/andy/clj/rebl/REBL-LATEST.jar
+-rwxr-xr-x 1 andy andy 2742771 Dec 19 13:41 /home/andy/clj/rebl/REBL-LATEST.jar
++ openssl md5 /home/andy/clj/rebl/REBL-LATEST.jar
+MD5(/home/andy/clj/rebl/REBL-LATEST.jar)= 85d3a4d6a8e09426fda9aa3c198a7c02
++ java -version
+openjdk version "11.0.5" 2019-10-15
+OpenJDK Runtime Environment (build 11.0.5+10-post-Ubuntu-0ubuntu1.118.04)
+OpenJDK 64-Bit Server VM (build 11.0.5+10-post-Ubuntu-0ubuntu1.118.04, mixed mode, sharing)
++ clj -Sdescribe
+{:version "1.10.1.469"
+ :config-files ["/usr/local/lib/clojure/deps.edn" "/home/andy/.clojure/deps.edn" "deps.edn" ]
+ :install-dir "/usr/local/lib/clojure"
+ :config-dir "/home/andy/.clojure"
+ :cache-dir ".cpcache"
+ :force false
+ :repro false
+ :resolve-aliases ""
+ :classpath-aliases ""
+ :jvm-aliases ""
+ :main-aliases ""
+ :all-aliases ""}
++ exec clj -R:rebl -m cognitect.rebl
+Clojure 1.10.0
+user=> Exception in thread "main" java.lang.ExceptionInInitializerError
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:398)
+	at clojure.lang.RT.classForName(RT.java:2207)
+	at clojure.lang.RT.classForName(RT.java:2216)
+	at clojure.lang.RT.loadClassForName(RT.java:2235)
+	at clojure.lang.RT.load(RT.java:453)
+	at clojure.lang.RT.load(RT.java:428)
+	at clojure.core$load$fn__6824.invoke(core.clj:6126)
+	at clojure.core$load.invokeStatic(core.clj:6125)
+	at clojure.core$load.doInvoke(core.clj:6109)
+	at clojure.lang.RestFn.invoke(RestFn.java:408)
+	at clojure.core$load_one.invokeStatic(core.clj:5908)
+	at clojure.core$load_one.invoke(core.clj:5903)
+	at clojure.core$load_lib$fn__6765.invoke(core.clj:5948)
+	at clojure.core$load_lib.invokeStatic(core.clj:5947)
+	at clojure.core$load_lib.doInvoke(core.clj:5928)
+	at clojure.lang.RestFn.applyTo(RestFn.java:142)
+	at clojure.core$apply.invokeStatic(core.clj:667)
+	at clojure.core$load_libs.invokeStatic(core.clj:5985)
+	at clojure.core$load_libs.doInvoke(core.clj:5969)
+	at clojure.lang.RestFn.applyTo(RestFn.java:137)
+	at clojure.core$apply.invokeStatic(core.clj:667)
+	at clojure.core$require.invokeStatic(core.clj:6007)
+	at clojure.core$require.doInvoke(core.clj:6007)
+	at clojure.lang.RestFn.invoke(RestFn.java:408)
+	at cognitect.rebl.impl.js$loading__6706__auto____15358.invoke(js.clj:3)
+	at cognitect.rebl.impl.js__init.load(Unknown Source)
+	at cognitect.rebl.impl.js__init.<clinit>(Unknown Source)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:398)
+	at clojure.lang.RT.classForName(RT.java:2207)
+	at clojure.lang.RT.classForName(RT.java:2216)
+	at clojure.lang.RT.loadClassForName(RT.java:2235)
+	at clojure.lang.RT.load(RT.java:453)
+	at clojure.lang.RT.load(RT.java:428)
+	at clojure.core$load$fn__6824.invoke(core.clj:6126)
+	at clojure.core$load.invokeStatic(core.clj:6125)
+	at clojure.core$load.doInvoke(core.clj:6109)
+	at clojure.lang.RestFn.invoke(RestFn.java:408)
+	at clojure.core$load_one.invokeStatic(core.clj:5908)
+	at clojure.core$load_one.invoke(core.clj:5903)
+	at clojure.core$load_lib$fn__6765.invoke(core.clj:5948)
+	at clojure.core$load_lib.invokeStatic(core.clj:5947)
+	at clojure.core$load_lib.doInvoke(core.clj:5928)
+	at clojure.lang.RestFn.applyTo(RestFn.java:142)
+	at clojure.core$apply.invokeStatic(core.clj:667)
+	at clojure.core$load_libs.invokeStatic(core.clj:5985)
+	at clojure.core$load_libs.doInvoke(core.clj:5969)
+	at clojure.lang.RestFn.applyTo(RestFn.java:137)
+	at clojure.core$apply.invokeStatic(core.clj:667)
+	at clojure.core$require.invokeStatic(core.clj:6007)
+	at clojure.core$require.doInvoke(core.clj:6007)
+	at clojure.lang.RestFn.invoke(RestFn.java:436)
+	at cognitect.rebl.impl.monaco$loading__6706__auto____15421.invoke(monaco.clj:3)
+	at cognitect.rebl.impl.monaco__init.load(Unknown Source)
+	at cognitect.rebl.impl.monaco__init.<clinit>(Unknown Source)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:398)
+	at clojure.lang.RT.classForName(RT.java:2207)
+	at clojure.lang.RT.classForName(RT.java:2216)
+	at clojure.lang.RT.loadClassForName(RT.java:2235)
+	at clojure.lang.RT.load(RT.java:453)
+	at clojure.lang.RT.load(RT.java:428)
+	at clojure.core$load$fn__6824.invoke(core.clj:6126)
+	at clojure.core$load.invokeStatic(core.clj:6125)
+	at clojure.core$load.doInvoke(core.clj:6109)
+	at clojure.lang.RestFn.invoke(RestFn.java:408)
+	at clojure.core$load_one.invokeStatic(core.clj:5908)
+	at clojure.core$load_one.invoke(core.clj:5903)
+	at clojure.core$load_lib$fn__6765.invoke(core.clj:5948)
+	at clojure.core$load_lib.invokeStatic(core.clj:5947)
+	at clojure.core$load_lib.doInvoke(core.clj:5928)
+	at clojure.lang.RestFn.applyTo(RestFn.java:142)
+	at clojure.core$apply.invokeStatic(core.clj:667)
+	at clojure.core$load_libs.invokeStatic(core.clj:5985)
+	at clojure.core$load_libs.doInvoke(core.clj:5969)
+	at clojure.lang.RestFn.applyTo(RestFn.java:137)
+	at clojure.core$apply.invokeStatic(core.clj:667)
+	at clojure.core$require.invokeStatic(core.clj:6007)
+	at clojure.core$require.doInvoke(core.clj:6007)
+	at clojure.lang.RestFn.invoke(RestFn.java:930)
+	at cognitect.rebl.ui$loading__6706__auto____15578.invoke(ui.clj:3)
+	at cognitect.rebl.ui__init.load(Unknown Source)
+	at cognitect.rebl.ui__init.<clinit>(Unknown Source)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:398)
+	at clojure.lang.RT.classForName(RT.java:2207)
+	at clojure.lang.RT.classForName(RT.java:2216)
+	at clojure.lang.RT.loadClassForName(RT.java:2235)
+	at clojure.lang.RT.load(RT.java:453)
+	at clojure.lang.RT.load(RT.java:428)
+	at clojure.core$load$fn__6824.invoke(core.clj:6126)
+	at clojure.core$load.invokeStatic(core.clj:6125)
+	at clojure.core$load.doInvoke(core.clj:6109)
+	at clojure.lang.RestFn.invoke(RestFn.java:408)
+	at clojure.core$load_one.invokeStatic(core.clj:5908)
+	at clojure.core$load_one.invoke(core.clj:5903)
+	at clojure.core$load_lib$fn__6765.invoke(core.clj:5948)
+	at clojure.core$load_lib.invokeStatic(core.clj:5947)
+	at clojure.core$load_lib.doInvoke(core.clj:5928)
+	at clojure.lang.RestFn.applyTo(RestFn.java:142)
+	at clojure.core$apply.invokeStatic(core.clj:667)
+	at clojure.core$load_libs.invokeStatic(core.clj:5985)
+	at clojure.core$load_libs.doInvoke(core.clj:5969)
+	at clojure.lang.RestFn.applyTo(RestFn.java:137)
+	at clojure.core$apply.invokeStatic(core.clj:667)
+	at clojure.core$require.invokeStatic(core.clj:6007)
+	at clojure.core$require.doInvoke(core.clj:6007)
+	at clojure.lang.RestFn.invoke(RestFn.java:436)
+	at cognitect.rebl$ui.invokeStatic(rebl.clj:77)
+	at cognitect.rebl$ui.doInvoke(rebl.clj:74)
+	at clojure.lang.RestFn.invoke(RestFn.java:421)
+	at cognitect.rebl$repl.invokeStatic(rebl.clj:121)
+	at cognitect.rebl$repl.invoke(rebl.clj:96)
+	at cognitect.rebl$_main.invokeStatic(rebl.clj:125)
+	at cognitect.rebl$_main.invoke(rebl.clj:124)
+	at clojure.lang.AFn.applyToHelper(AFn.java:152)
+	at clojure.lang.AFn.applyTo(AFn.java:144)
+	at clojure.lang.Var.applyTo(Var.java:705)
+	at clojure.core$apply.invokeStatic(core.clj:665)
+	at clojure.main$main_opt.invokeStatic(main.clj:491)
+	at clojure.main$main_opt.invoke(main.clj:487)
+	at clojure.main$main.invokeStatic(main.clj:598)
+	at clojure.main$main.doInvoke(main.clj:561)
+	at clojure.lang.RestFn.applyTo(RestFn.java:137)
+	at clojure.lang.Var.applyTo(Var.java:705)
+	at clojure.main.main(main.java:37)
+Caused by: java.lang.ClassNotFoundException: javafx.scene.web.WebEngine
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:398)
+	at clojure.lang.RT.classForName(RT.java:2207)
+	at clojure.lang.RT.classForNameNonLoading(RT.java:2220)
+	at cognitect.rebl.impl.js_object$loading__6706__auto____15364.invoke(js_object.clj:3)
+	at cognitect.rebl.impl.js_object__init.load(Unknown Source)
+	at cognitect.rebl.impl.js_object__init.<clinit>(Unknown Source)
+	... 127 more
