@@ -64,7 +64,7 @@ java.lang.UnsatisfiedLinkError: /Users/andy/.openjfx/cache/11.0.1/libprism_es2.d
 ```
 
 
-# macOS
+# macOS OpenJDK with Java FX included
 
 Instructions to download a macOS version of Zulu Community edition of
 OpenJDK with Java FX included, which makes it more straightforward to
