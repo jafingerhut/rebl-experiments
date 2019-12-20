@@ -31,29 +31,29 @@ The version combinations below failed with various kinds of errors.
 
 | OS   | JDK      | deps.edn | Result |
 | ---- | -------- | -------- | ------ |
-| macOS 10.14, Ubuntu 18.04 | AdoptOpenJDK 8 | jdk8-01 | CNFE netscape... [Note 1] |
-| macOS 10.14, Ubuntu 18.04 | Zulu OpenJDK 8 | jdk8-01 | CNFE netscape... [Note 1] |
+| macOS 10.14, Ubuntu 18.04 | AdoptOpenJDK 8 | jdk8-01 | ClassNotFoundException netscape.javascript.JSObject [Note 1] |
+| macOS 10.14, Ubuntu 18.04 | Zulu OpenJDK 8 | jdk8-01 | ClassNotFoundException netscape.javascript.JSObject [Note 1] |
 | Ubuntu 18.04 | Oracle JDK 8 | jdk8-01 | tbd |
-| macOS 10.14 | AdoptOpenJDK 11 | jdk11-01 | ULE [Note 3] |
-| macOS 10.14, Ubuntu 18.04 | AdoptOpenJDK 11 | jdk11-02 | CNFE javafx... [Note 2] |
+| macOS 10.14 | AdoptOpenJDK 11 | jdk11-01 | java.lang.UnsatisfiedLinkError [Note 3] |
+| macOS 10.14, Ubuntu 18.04 | AdoptOpenJDK 11 | jdk11-02 | ClassNotFoundException javafx.scene.web.WebEngine [Note 2] |
 | macOS 10.14 | Zulu OpenJDK 11 | jdk11-02 | tbd |
-| Ubuntu 18.04 | Zulu OpenJDK 11 | jdk11-02 | CNFE javafx... [Note 2] |
-| Ubuntu 18.04 | Ubuntu OpenJDK 11 | jdk11-02 | CNFE javafx... [Note 2] |
+| Ubuntu 18.04 | Zulu OpenJDK 11 | jdk11-02 | ClassNotFoundException javafx.scene.web.WebEngine [Note 2] |
+| Ubuntu 18.04 | Ubuntu OpenJDK 11 | jdk11-02 | ClassNotFoundException javafx.scene.web.WebEngine [Note 2] |
 
 
-[1] A stack trace shortly after starting, where near the end is this line:
+[Note 1] A stack trace shortly after starting, where near the end is this line:
 
 ```
 Caused by: java.lang.ClassNotFoundException: netscape.javascript.JSObject
 ```
 
-[2] A stack trace shortly after starting, where near the end is this line:
+[Note 2] A stack trace shortly after starting, where near the end is this line:
 
 ```
 Caused by: java.lang.ClassNotFoundException: javafx.scene.web.WebEngine
 ```
 
-[3] An UnsatisfiedLinkError message that begins with lines like these:
+[Note 3] An UnsatisfiedLinkError message that begins with lines like these:
 
 ```
 Loading library prism_es2 from resource failed: java.lang.UnsatisfiedLinkError: /Users/andy/.openjfx/cache/11.0.1/libprism_es2.dylib: dlopen(/Users/andy/.openjfx/cache/11.0.1/libprism_es2.dylib, 1): no suitable image found.  Did find:
